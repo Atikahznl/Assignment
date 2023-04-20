@@ -43,5 +43,6 @@ int main() {
     	}
 	close(pipefd[0]);
 	close(pipefd[1]);
-    	return 0;
+
+	return 0;
 }
