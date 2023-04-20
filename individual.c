@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-void sigint_handler(int signal_num) {
+void sigint_handler(int sig) {
 	printf("\nInterrupt received. Exiting...\n");
    	exit(0);
 }
