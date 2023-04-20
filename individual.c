@@ -6,7 +6,7 @@
 #include <sys/wait.h>
 
 void sigint_handler(int signal_num) {
-	printf("Interrupt received. Exiting...\n");
+	printf("\nInterrupt received. Exiting...\n");
    	exit(0);
 }
 
@@ -22,7 +22,7 @@ int main() {
     	}
 	printf("Enter a message to send to child : ");
         fgets(message, sizeof(message), stdin);
-    	
+
 	for (int i = 0; i <5; i++) {
         	pid_t pid = fork();
         	if (pid == -1) {
@@ -38,13 +38,10 @@ int main() {
             		child[i] = pid;
 			write(pipefd[1], message, sizeof(message));
 			printf("Parent writing to child %d\n", i+1);
+			wait(NULL);
 		}
     	}
-	for (int i = 0; i <5; i++) {
-		wait(NULL);
-   	}
 	close(pipefd[0]);
 	close(pipefd[1]);
     	return 0;
 }
-
